@@ -59,4 +59,4 @@ npm run dev
 
 ## Contact info
 
-if any problem contact me on <a href="https://api.whatsapp.com/send?phone=6285261297134">whatsapp</a>
+if any problem contact me on <a target="_blank" href="https://api.whatsapp.com/send?phone=6285261297134">whatsapp</a>
