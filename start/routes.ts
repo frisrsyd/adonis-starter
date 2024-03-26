@@ -18,6 +18,7 @@ const UsersController = () => import('#controllers/users_controller')
 //   return view.render('pages/home')
 // })
 
+router.get('/', [PagesController, 'beranda'])
 router.get('/beranda', [PagesController, 'beranda'])
 router.get('/about', [PagesController, 'about'])
 router.get('/crud', [PagesController, 'crud'])
