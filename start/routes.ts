@@ -12,11 +12,11 @@ import router from '@adonisjs/core/services/router'
 const PagesController = () => import('#controllers/pages_controller')
 const UsersController = () => import('#controllers/users_controller')
 
-router.on('/').render('pages/home')
+// router.on('/').render('pages/home')
 
-router.get('/home', async ({ view }) => {
-  return view.render('pages/home')
-})
+// router.get('/home', async ({ view }) => {
+//   return view.render('pages/home')
+// })
 
 router.get('/beranda', [PagesController, 'beranda'])
 router.get('/about', [PagesController, 'about'])
@@ -24,5 +24,4 @@ router.get('/crud', [PagesController, 'crud'])
 // router.get('/beranda', '#controllers/pages_controller.beranda')
 
 // user route
-router.post('/user', [UsersController, 'create'])
-
+router.resource('user', UsersController)

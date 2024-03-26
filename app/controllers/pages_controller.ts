@@ -3,7 +3,8 @@ import type { HttpContext } from '@adonisjs/core/http'
 
 export default class PagesController {
   async beranda({ view }: HttpContext) {
-    const users = await User.all()
+    // users from oldest to newest
+    const users = await User.query().orderBy('id', 'asc')
     return view.render('pages/home', { users: users })
   }
 

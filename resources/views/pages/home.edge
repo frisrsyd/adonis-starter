@@ -13,22 +13,33 @@
           {{flashMessages.get('error')}}
       </div>
     @endif
-
-    <a class="text-2xl font-bold underline decoration-sky-200 text-gray-600" href="{{route('/about')}}">Pergi ke halaman about</a>
-    <br>
     
     <h1 class="text-2xl font-bold text-neutral-800">List User</h1>
-    <ul>
-      @each(item in users)
-      <li>ID: {{item.id}}</li>
-      <li>Name: {{item.fullName}}</li>
-      <li>Email: {{item.email}}</li>
-      <br>
-      @endeach
-    </ul>
-    <br>
-
-    <a class="text-2xl font-bold underline decoration-sky-200 text-gray-600" href="{{route('/crud')}}">CRUD</a>
-    
+    {{--  make table for get user  --}}
+    <table class="table-auto w-full">
+      <thead>
+        <tr>
+          <th class="px-4 py-2">No</th>
+          <th class="px-4 py-2">Name</th>
+          <th class="px-4 py-2">Email</th>
+          <th class="px-4 py-2">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @each( item in users)
+          <tr>
+            <td class="border px-4 py-2">{{item.id}}</td>
+            <td class="border px-4 py-2">{{item.fullName}}</td>
+            <td class="border px-4 py-2">{{item.email}}</td>
+            <td class="border px-4 py-2">
+              <a href="{{route('user.show', {id: item.id})}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</a>
+              <form class="mt-5" method="POST" action="{{ route('user.destroy', {id: item.id}, { qs: { _method: 'DELETE' } }) }}">
+                {{csrfField()}}
+                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+              </form>
+            </td>
+          </tr>
+        @endeach
+      </tbody>
   @endslot
 @end
